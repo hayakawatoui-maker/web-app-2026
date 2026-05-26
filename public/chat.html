@@ -1,0 +1,20 @@
+const express = require("express");
+const app = express();
+
+app.use(express.json());
+
+app.post('/api/tasks', (req, res) => {
+  const { title, deadline, status } = req.body;
+
+  console.log(title);
+  console.log(deadline);
+  console.log(status);
+
+  res.json({
+    message: '課題追加成功'
+  });
+});
+
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
+});

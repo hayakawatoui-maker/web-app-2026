@@ -1,20 +1,10 @@
-const express = require('express');
-const app = express();
+app.use(express.json()); 
+app.post('/api/test', (req, res) => {
+  const { title, message } = req.body;
 
-app.get('/', (req, res) => {
-    res.send('トップページです!');
+  const newItem = { title, message };
+
+  console.log("受け取ったデータ:", newItem);
+
+  res.json(newItem);
 });
-
-app.get('/about', (req, res) => {
-    res.send('自己紹介ページです');
-});
-
-app.get('/time', (req, res) => {
-    const now = new Date().toLocaleString('ja-JP')
-    res.send('現在時刻：' + now);
-});
-
-app.listen(3000, () => {
-    console.log('サーバーが起動しました： http://localhost:3000');
-});
-

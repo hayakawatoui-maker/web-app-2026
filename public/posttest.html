@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>POST テスト</h1>
+
+  <button onclick="sendData()">送信</button>
+
+  <script>
+    async function sendData() {
+      const response = await fetch('/api/test', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: "テストタイトル",
+          message: "テストメッセージ"
+        })
+      });
+
+      const data = await response.json();
+      console.log("サーバーからの返事:", data);
+    }
+  </script>
+</body>
+</html>
